@@ -14,10 +14,27 @@
 ```mermaid
 flowchart LR
     ref["참조 사진"] -- OpenPose --> skel["관절 뼈대 그림"]
-    skel -- 자세 --> gen["SDXL + ControlNet"]
-    prompt["프롬프트<br/>(나머지 다섯 칸)"] -- 내용·조명·화풍 --> gen
+    skel -- "자세" --> gen["SDXL + ControlNet"]
+    prompt["프롬프트<br/>(나머지 다섯 칸)"] -- "내용 · 조명 · 화풍" --> gen
     gen --> out["결과 이미지"]
+
+    classDef pose   fill:#cfe8f3,stroke:#1f6f8b,stroke-width:2px,color:#10323d
+    classDef text   fill:#fbe3c2,stroke:#a86a0c,stroke-width:2px,color:#432a04
+    classDef engine fill:#e0d8f5,stroke:#5c43a8,stroke-width:2px,color:#241a47
+    classDef result fill:#d2ead0,stroke:#3a7d40,stroke-width:2px,color:#17331a
+
+    class ref,skel pose
+    class prompt text
+    class gen engine
+    class out result
+
+    linkStyle 0,1 stroke:#1f6f8b,stroke-width:2px,color:#1f6f8b
+    linkStyle 2   stroke:#a86a0c,stroke-width:2px,color:#a86a0c
+    linkStyle 3   stroke:#3a7d40,stroke-width:3px,color:#3a7d40
 ```
+
+파란 쪽이 **자세**를 나르는 길, 주황 쪽이 **내용·조명·화풍**을 나르는 길입니다.
+두 길이 모델에서 합쳐져 초록색 결과 한 장이 나옵니다.
 
 | 구성 | 쓴 것 | 라이선스 |
 |---|---|---|
