@@ -28,9 +28,9 @@ flowchart LR
     class gen engine
     class out result
 
-    linkStyle 0,1 stroke:#1f6f8b,stroke-width:2px,color:#1f6f8b
-    linkStyle 2   stroke:#a86a0c,stroke-width:2px,color:#a86a0c
-    linkStyle 3   stroke:#3a7d40,stroke-width:3px,color:#3a7d40
+    linkStyle 0,1 stroke:#1f6f8b,stroke-width:2.5px
+    linkStyle 2   stroke:#c07a0e,stroke-width:2.5px
+    linkStyle 3   stroke:#3a7d40,stroke-width:3px
 ```
 
 파란 쪽이 **자세**를 나르는 길, 주황 쪽이 **내용·조명·화풍**을 나르는 길입니다.
