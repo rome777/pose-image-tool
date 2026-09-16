@@ -30,7 +30,7 @@ cropped, out of frame, extra limbs, deformed hands, text, watermark
 참조 사진은 **한 명 / 전신 / 팔다리가 몸에 겹치지 않는 것** 세 가지가 지켜져야 합니다.
 관절이 가려지면 OpenPose가 못 찾고, 못 찾은 관절은 조건으로 들어가지 않습니다.
 
-### pose_01 — 한 팔은 위로, 한 팔은 옆으로
+### pose_01 — 정면을 보고 선 자세
 
 ```
 Full body studio photograph of one adult in a plain gray t-shirt and jeans, standing on a
@@ -39,6 +39,10 @@ arm extended horizontally to the side, facing the camera. Even soft studio light
 front, 50mm lens, the whole body from head to shoes inside the frame. Photorealistic
 reference photograph, neutral colors.
 ```
+
+> **실제로 나온 것:** 두 팔을 내리고 정면을 보고 선 평범한 자세. **요청한 팔 동작이 무시됐습니다.**
+> 이게 이 도구가 필요한 이유입니다. 자세는 프롬프트로 지시해도 잘 안 듣습니다.
+> 그래도 실습에는 지장이 없어 나온 그대로 뼈대를 뽑아 썼습니다(`samples/pose_01.png`).
 
 ### pose_02 — 한쪽 무릎을 꿇은 자세
 
@@ -49,6 +53,9 @@ head turned to the left, side three-quarter view. Even soft studio lighting from
 50mm lens, the whole body from head to shoes inside the frame. Photorealistic reference
 photograph, neutral colors.
 ```
+
+> **실제로 나온 것:** 요청한 대로 한쪽 무릎을 꿇고 앞쪽 무릎에 손을 얹은 자세.
+> 뼈대도 깨끗하게 뽑혔습니다(`samples/pose_02.png`).
 
 ---
 
@@ -94,6 +101,8 @@ watercolor texture.
 
 **바꾼 칸:** 피사체 / 환경 / 조명 방향 / 렌즈 / 스타일. **안 바꾼 것:** 자세, 시드, 모델, 스텝, 가이던스.
 
+**결과:** 세 장 모두 자세가 유지되고 인물·옷·배경·화풍만 바뀌었습니다.
+
 ---
 
 ## 3. 실험 2 — 프롬프트는 그대로, 자세만 바꿈
@@ -119,9 +128,9 @@ shallow depth of field. Photorealistic documentary photography, muted industrial
 
 | 파일 | scale | 관찰 |
 |---|---|---|
-| `scale_03.png` | 0.3 | 자세를 헐겁게만 참고. 프롬프트가 이김 |
-| `scale_08.png` | 0.8 | 절충점. 자세는 지키면서 화풍 지시도 살아 있음 |
-| `scale_12.png` | 1.2 | 자세는 정확하지만 인물이 뻣뻣해지고 화풍 지시가 약해짐 |
+| `scale_03.png` | 0.3 | **인물이 뒤로 돌아섰다.** 서 있다는 것만 맞고 방향·팔 위치가 뼈대와 어긋남 |
+| `scale_08.png` | 0.8 | 절충점. 뼈대를 그대로 따르면서 화풍·조명 지시도 살아 있음 |
+| `scale_12.png` | 1.2 | 자세는 정확하지만 **손이 무너지고** 손 자리에 주인 없는 기계 부품이 붙음 |
 
 ---
 
@@ -129,6 +138,15 @@ shallow depth of field. Photorealistic documentary photography, muted industrial
 
 `repro_check.png` 는 `output_01` 과 **완전히 같은 조건**(프롬프트·시드·뼈대·스텝·가이던스)으로
 한 번 더 뽑은 것입니다. 두 이미지의 픽셀 차이를 계산해 최대값이 0인지 확인합니다.
+
+실제 결과는 **픽셀 차이 0**, 파일 해시까지 동일했습니다.
+
+```
+output_01.png    ef353293140b255f
+repro_check.png  ef353293140b255f
+scale_08.png     ef353293140b255f   (기본 scale 0.8 과 같은 조건이라 같은 파일)
+output_02.png    f5bdc989f4e197c4   (뼈대만 다름)
+```
 
 시드를 문자열에서 만들 때는 파이썬 기본 `hash()` 를 쓰지 않습니다.
 보안상의 이유로 프로그램을 새로 실행할 때마다 값이 달라져서, 오늘 뽑은 그림을 내일 다시 못 뽑습니다.

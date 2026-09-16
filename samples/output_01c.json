@@ -1,0 +1,16 @@
+{
+  "output": "output_01c.png",
+  "pose_reference": "pose_01.png",
+  "prompt": "A traditional Korean scholar in a pale blue hanbok standing in a temple courtyard. Full shot, static camera, 85mm lens. Warm late afternoon light from the left, soft shadows on stone tiles. Wooden pillars and a tiled roof behind, softly out of focus. Painterly illustration, ink and watercolor texture.",
+  "negative_prompt": "cropped, out of frame, extra limbs, deformed hands, text, watermark",
+  "seed": 20260916,
+  "base_model": "stabilityai/stable-diffusion-xl-base-1.0",
+  "controlnet_model": "thibaud/controlnet-openpose-sdxl-1.0",
+  "steps": 25,
+  "guidance_scale": 5.0,
+  "controlnet_conditioning_scale": 0.8,
+  "size": [
+    768,
+    1024
+  ]
+}

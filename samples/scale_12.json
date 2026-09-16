@@ -1,0 +1,16 @@
+{
+  "output": "scale_12.png",
+  "pose_reference": "pose_01.png",
+  "prompt": "A factory worker in a white safety helmet and navy work uniform inside a large manufacturing plant. Medium full shot, static camera, 50mm lens. Soft morning light from tall windows on the left throws long reflections on the polished concrete floor. Rows of idle machinery recede into shallow depth of field. Photorealistic documentary photography, muted industrial color palette.",
+  "negative_prompt": "cropped, out of frame, extra limbs, deformed hands, text, watermark",
+  "seed": 20260916,
+  "base_model": "stabilityai/stable-diffusion-xl-base-1.0",
+  "controlnet_model": "thibaud/controlnet-openpose-sdxl-1.0",
+  "steps": 25,
+  "guidance_scale": 5.0,
+  "controlnet_conditioning_scale": 1.2,
+  "size": [
+    768,
+    1024
+  ]
+}

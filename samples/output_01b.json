@@ -1,0 +1,16 @@
+{
+  "output": "output_01b.png",
+  "pose_reference": "pose_01.png",
+  "prompt": "An astronaut in a white spacesuit on the dusty surface of Mars. Full shot, static camera, 35mm lens. Hard low sunlight from the right, long sharp shadow on red sand. Distant rocky ridges under a pale orange sky. Photorealistic cinematic still, warm desaturated palette.",
+  "negative_prompt": "cropped, out of frame, extra limbs, deformed hands, text, watermark",
+  "seed": 20260916,
+  "base_model": "stabilityai/stable-diffusion-xl-base-1.0",
+  "controlnet_model": "thibaud/controlnet-openpose-sdxl-1.0",
+  "steps": 25,
+  "guidance_scale": 5.0,
+  "controlnet_conditioning_scale": 0.8,
+  "size": [
+    768,
+    1024
+  ]
+}
